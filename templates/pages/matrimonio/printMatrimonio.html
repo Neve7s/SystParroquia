@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>La purisima | Editar registro de matrimonio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/addDoc.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/formstyle.css' %}">
+    <script src="{% static 'js/jsapp.js' %}" defer></script>
+  </head>
+  <body data-section="matrimonio">
+    <div class="container_preview">
+      <h1><strong>PARTIDAS DE MATRIMONIO</strong></h1>
+      <button id="previewButton" type="button" class="normal_button">Agregar al Preview</button>
+      <div class="preview" id="preview"></div>
+      <div style="display: flex; justify-content: center;">
+        <button id="imp" class="normal_button">IMPRIMIR</button>
+        <script>
+          document.getElementById('imp').addEventListener('click', function() {
+              window.print();
+          });
+        </script>
+        <button id="fondo" class="normal_button">CAMBIAR FORMATO</button>
+        <input type="file" id="uploadFile" accept="image/*, application/pdf" style="display: none;">
+      </div>
+    </div>
+
+    <div class="container_right">
+      <section class="container_input">
+        <form method="post">
+          {% csrf_token %}
+          <label style="heigh:5px" for="{{ form.parroquia.id_for_label }}">Parroquia:</label>
+          {{ form.parroquia }}
+
+          <div class="form-container">
+            <label for="{{ form.libro.id_for_label }}">Libro:</label>
+            {{ form.libro }}
+
+            <label for="{{ form.fojas.id_for_label }}">Foja:</label>
+            {{ form.fojas }}
+
+            <label for="{{ form.numero.id_for_label }}">Número:</label>
+            {{ form.numero }}
+          </div>
+
+          <label for="{{ form.esposo.id_for_label }}">Esposo:</label>
+          {{ form.esposo }}
+
+          <label for="{{ form.padre_esposo.id_for_label }}">Hijo de Don:</label>
+          {{ form.padre_esposo }}
+
+          <label for="{{ form.madre_esposo.id_for_label }}">y Doña:</label>
+          {{ form.madre_esposo }}
+
+          <label for="{{ form.lugar_bautizo_esposo.id_for_label }}">Bautizado en la parroquia de:</label>
+          {{ form.lugar_bautizo_esposo }}
+
+          <label for="{{ form.esposa.id_for_label }}">Esposa:</label>
+          {{ form.esposa }}
+
+          <label for="{{ form.padre_esposo.id_for_label }}">Hija de Don:</label>
+          {{ form.padre_esposa }}
+
+          <label for="{{ form.madre_esposa.id_for_label }}">y Doña:</label>
+          {{ form.madre_esposa }}
+
+          <label for="{{ form.lugar_bautizo_esposa.id_for_label }}">Bautizada en la parroquia de:</label>
+          {{ form.lugar_bautizo_esposa }}
+
+          <label for="{{ form.fecha_matrimonio.id_for_label }}">Fecha de Matrimonio:</label>
+          {{ form.fecha_matrimonio }}
+
+          <label for="{{ form.padrinos.id_for_label }}">Padrinos:</label>
+          {{ form.padrinos }}
+
+          <label for="{{ form.anotaciones.id_for_label }}">Anotaciones:</label>
+          {{ form.anotaciones }}
+
+          <div class="container_save">
+            <button type="submit" class="normal_button">GUARDAR</button>
+          </div>
+        </form>
+        <div class="container_save" style="justify-content: center">
+          <a href="{% url 'matrimonio' %}">
+            <button class="red_button">CANCELAR</button>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="container_home">
+      <a href="/matrimonio">
+        <button class="home_button">
+          <img class="home_icon" src="{% static 'src/back_icon.png' %}" alt="icono de atras" />
+        </button>
+      </a>
+
+      <a href="/">
+        <button class="home_button">
+          <img class="back_icon" src="{% static 'src/home_icon.png' %}" alt="icono de home" />
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>La purisima | Editar registro de bautizo</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/addDoc.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/formstyle.css' %}">
+    <script src="{% static 'js/jsapp.js' %}" defer></script>
+  </head>
+  <body data-section="bautizo">
+    <div class="container_preview">
+      <h1><strong>PARTIDAS DE BAUTISMO</strong></h1>
+      <button id="previewButton" type="button" class="normal_button">Agregar al Preview</button>
+      <div class="preview" id="preview"></div>
+      <div style="display: flex; justify-content: center;">
+        <button id="imp" class="normal_button">IMPRIMIR</button>
+        <script>
+          document.getElementById('imp').addEventListener('click', function() {
+              window.print();
+          });
+        </script>
+        <button id="fondo" class="normal_button">CAMBIAR FORMATO</button>
+        <input type="file" id="uploadFile" accept="image/*, application/pdf" style="display: none;">
+      </div>
+    </div>
+
+    <div class="container_right">
+      <section class="container_input">
+        <form method="post">
+          {% csrf_token %}
+          <label style="heigh:5px" for="{{ formaBautizo.parroquia.id_for_label }}">Parroquia:</label>
+          {{ formaBautizo.parroquia }}
+
+          <div class="form-container">
+            <label for="{{ formaBautizo.libro.id_for_label }}">Libro:</label>
+            {{ formaBautizo.libro }}
+
+            <label for="{{ formaBautizo.fojas.id_for_label }}">Foja:</label>
+            {{ formaBautizo.fojas }}
+
+            <label for="{{ formaBautizo.numero.id_for_label }}">Número:</label>
+            {{ formaBautizo.numero }}
+          </div>
+
+          <div class="form-container">
+            <label for="{{ formaBautizo.fecha_nacimiento.id_for_label }}" style="font-size: 14px">Fecha de Nacimiento:</label>
+            {{ formaBautizo.fecha_nacimiento }}
+
+            <label for="{{ formaBautizo.fecha_bautizo.id_for_label }}" style="font-size: 14px">Fecha de Bautismo:</label>
+            {{ formaBautizo.fecha_bautizo }}
+          </div>
+
+          <label for="{{ formaBautizo.apellidos.id_for_label }}">Apellidos:</label>
+          {{ formaBautizo.apellidos }}
+
+          <label for="{{ formaBautizo.nombres.id_for_label }}">Nombres:</label>
+          {{ formaBautizo.nombres }}
+
+          <label for="{{ formaBautizo.lugar_nacimiento.id_for_label }}">Lugar de nacimiento (provincia y distrito):</label>
+          {{ formaBautizo.lugar_nacimiento }}
+
+          <label for="{{ formaBautizo.padre.id_for_label }}">Padre:</label>
+          {{ formaBautizo.padre }}
+
+          <label for="{{ formaBautizo.nacimientolugarpadre.id_for_label }}">Lugar de nacimiento (Padre):</label>
+          {{ formaBautizo.nacimientolugarpadre }}
+
+          <label for="{{ formaBautizo.madre.id_for_label }}">Madre:</label>
+          {{ formaBautizo.madre }}
+
+          <label for="{{ formaBautizo.nacimientolugarmadre.id_for_label }}">Lugar de nacimiento (Madre):</label>
+          {{ formaBautizo.nacimientolugarmadre }}
+
+          <label for="{{ formaBautizo.padrinos.id_for_label }}">Padrinos:</label>
+          {{ formaBautizo.padrinos }}
+
+          <label for="{{ formaBautizo.oficiante.id_for_label }}">Oficiante:</label>
+          {{ formaBautizo.oficiante }}
+
+          <label for="{{ formaBautizo.anotaciones.id_for_label }}">Anotaciones:</label>
+          {{ formaBautizo.anotaciones }}
+
+          <div class="container_save">
+            <button type="submit" class="normal_button">GUARDAR</button>
+          </div>
+        </form>
+        <div class="container_save" style="justify-content: center">
+          <a href="{% url 'bautizo' %}">
+            <button class="red_button">CANCELAR</button>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="container_home">
+      <a href="/bautizo">
+        <button class="home_button">
+          <img class="home_icon" src="{% static 'src/back_icon.png' %}" alt="icono de atras" />
+        </button>
+      </a>
+
+      <a href="/">
+        <button class="home_button">
+          <img class="back_icon" src="{% static 'src/home_icon.png' %}" alt="icono de home" />
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

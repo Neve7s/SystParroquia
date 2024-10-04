@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>La purisima | Registro de bautizo</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/addDoc.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/formstyle.css' %}">
+    <script src="{% static 'js/jsapp.js' %}" defer></script>
+  </head>
+  <body data-section="bautizo">
+    <div class="container_preview">
+      <h1><strong>PARTIDAS DE BAUTISMO</strong></h1>
+      <button id="previewButtonC" type="button" class="normal_button">Agregar al Preview</button>
+      <div class="preview" id="preview"></div>
+      <div style="display: flex; justify-content: center;">
+        <button id="imp" class="normal_button">IMPRIMIR</button>
+        <script>
+          document.getElementById('imp').addEventListener('click', function() {
+              window.print();
+          });
+        </script>
+        <button id="fondo" class="normal_button">CAMBIAR FORMATO</button>
+        <input type="file" id="uploadFile" accept="image/*, application/pdf" style="display: none;">
+      </div>
+    </div>
+
+    <div class="container_right">
+      <section class="container_input">
+        <form method="post">
+          <label style="heigh:5px" for="parroquia">Parroquia:</label>
+          <input style="heigh:5px" id="parroquia" name="parroquia" type="text" value="La purísima - Concepción"/>
+
+          <div class="form-container">
+            <label for="libro">Libro:</label>
+            <input style="width: 40px" id="libro" name="libro" type="number" required/>
+
+            <label for="fojas">Foja:</label>
+            <input style="width: 40px" id="fojas" name="fojas" type="number" required/>
+
+            <label for="numero">Número:</label>
+            <input style="width: 40px" id="numero" name="numero" type="number" required/>
+          </div>
+
+          <div class="form-container">
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" required/>
+
+            <label for="fecha_bautizo">Fecha de Bautismo:</label>
+            <input id="fecha_bautizo" name="fecha_bautizo" type="date" required/>
+          </div>
+
+          <label for="apellidos">Apellidos:</label>
+          <input id="apellidos" name="apellidos" type="text" required/>
+
+          <label for="nombres">Nombres:</label>
+          <input id="nombres" name="nombres" type="text" required/>
+
+          <label for="lugar_nacimiento">Lugar de nacimiento:</label>
+          <input id="lugar_nacimiento" name="lugar_nacimiento" type="text" required/>
+
+          <label for="padre">Padre:</label>
+          <input id="padre" name="padre" type="text" required/>
+
+          <label for="nacimientolugarpadre">Lugar de nacimiento (Padre):</label>
+          <input id="nacimientolugarpadre" name="nacimientolugarpadre" type="text"/>
+
+          <label for="madre">Madre:</label>
+          <input id="madre" name="madre" type="text" required/>
+
+          <label for="nacimientolugarmadre">Lugar de nacimiento (Madre):</label>
+          <input id="nacimientolugarmadre" name="nacimientolugarmadre" type="text"/>
+
+          <label for="padrinos">Padrino:</label>
+          <input id="padrinos" name="padrinos" type="text"/>
+
+          <label for="oficiante">Oficiante:</label>
+          <input id="oficiante" name="oficiante" type="text"/>
+
+          <label for="anotaciones">Anotaciones:</label>
+          <input id="anotaciones" name="anotaciones" type="text" value="Ninguno"/>
+
+          <div class="container_save">
+            <button type="submit" class="normal_button">GUARDAR</button>
+          </div>
+          {% csrf_token %}
+        </form>
+        <div class="container_save" style="justify-content: center">
+          <a href="{% url 'bautizo' %}">
+            <button class="red_button">CANCELAR</button>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="container_home">
+      <a href="/bautizo">
+        <button class="home_button">
+          <img class="home_icon" src="{% static 'src/back_icon.png' %}" alt="icono de atras" />
+        </button>
+      </a>
+
+      <a href="/">
+        <button class="home_button">
+          <img class="back_icon" src="{% static 'src/home_icon.png' %}" alt="icono de home" />
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Primera Comunión</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/viewDoc.css' %}">
+  </head>
+  <body >
+    <div class="container_top">
+      <section class="container_filtro">
+        <!-- Todos los filtros están dentro de un solo formulario -->
+        <form method="GET" action="{% url 'listar_comunion' %}" style="display: flex; flex-direction: column;">
+          <div class="input_group_container" style="display: flex; gap: 20px;">
+            <div class="input_group">
+              <label>Apellidos y Nombres</label>
+              <input class="large_input" type="text" name="nombre" value="{{ request.GET.nombre }}" />
+            </div>
+
+            <div class="input_group">
+              <label>Año Primera comunión</label>
+              <input class="normal_input" type="number" name="ano_comunion" value="{{ request.GET.ano_comunion }}" />
+            </div>
+          </div>
+
+          <!-- Contenedor para centrar los botones -->
+          <div class="button_container" style="display: flex; justify-content: center; margin-top: 20px;">
+            <!-- Botón de "Filtrar" -->
+            <button class="normal_button" type="submit" style="margin-right: 10px;">FILTRAR</button>
+
+            <!-- Botón de "Eliminar Filtro" -->
+            <a href="{% url 'listar_comunion' %}">
+              <button class="normal_button eliminar" type="button">ELIMINAR FILTRO</button>
+            </a>
+          </div>
+        </form>
+      </section>
+    </div>
+
+
+    <section class="container_resultados">
+      <article class="article_resultado">
+        <table>
+          <thead>
+            <tr>
+              <th>Apellidos y Nombres</th>
+              <th>Padres</th>
+              <th>Fecha</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          {% for coms in comunions %}
+          <tbody>
+            <tr>
+              <td>{{ coms.nombre }}</td>
+              <td>{{ coms.padre }} y {{ coms.madre }}</td>
+              <td>{{ coms.fecha }}</td>
+              <td style="text-align: center; justify-content: center; width:auto;">
+                <a style="background-color: #558a9b; color: white; border: none; padding: 10px 20px; text-align:
+                          center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px;
+                          cursor: pointer; border-radius: 12px; width:auto;"
+                   href="/printComunion/{{coms.id}}"><strong>Imprimir/Editar</strong></a>
+                <a style="background-color: #b75b5b; color: white; border: none; padding: 10px 20px; text-align: center;
+                          text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;
+                          border-radius: 12px; width:auto;"
+                   href="/delComunion/{{coms.id}}"><strong>Eliminar</strong></a>
+              </td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </article>
+    </section>
+
+    <div class="container_agregar">
+      <a href="{% url 'addComunion' %}">
+        <button class="normal_button">AGREGAR</button>
+      </a>
+    </div>
+
+    <div class="container_home">
+      <a href="/">
+        <button class="home_button">
+          <img class="home_icon" src="{% static 'src/home_icon.png' %}" alt="icono de home" />
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

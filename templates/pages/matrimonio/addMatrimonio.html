@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registro de matrimonio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/addDoc.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/formstyle.css' %}">
+    <script src="{% static 'js/jsapp.js' %}" defer></script>
+  </head>
+  <body data-section="matrimonio">
+    <div class="container_preview">
+      <h1><strong>PARTIDAS DE MATRIMONIO</strong></h1>
+      <button id="previewButtonC" type="button" class="normal_button">Agregar al Preview</button>
+      <div class="preview" id="preview"></div>
+      <div style="display: flex; justify-content: center;">
+        <button id="imp" class="normal_button">IMPRIMIR</button>
+        <script>
+          document.getElementById('imp').addEventListener('click', function() {
+              window.print();
+          });
+        </script>
+        <button id="fondo" class="normal_button">CAMBIAR FORMATO</button>
+        <input type="file" id="uploadFile" accept="image/*, application/pdf" style="display: none;">
+      </div>
+    </div>
+
+    <div class="container_right">
+      <section class="container_input">
+        <form method="post">
+          <label style="heigh:5px" for="parroquia">Parroquia:</label>
+          <input style="heigh:5px" id="parroquia" name="parroquia" type="text" value="La purísima - Concepción"/>
+
+          <div class="form-container">
+            <label for="libro">Libro:</label>
+            <input style="width: 40px" id="libro" name="libro" type="number" required/>
+
+            <label for="fojas">Foja:</label>
+            <input style="width: 40px" id="fojas" name="fojas" type="number" required/>
+
+            <label for="numero">Número:</label>
+            <input style="width: 40px" id="numero" name="numero" type="number" required/>
+          </div>
+
+          <label for="esposo">Esposo:</label>
+          <input id="esposo" name="esposo" type="text" required/>
+
+          <label for="padre_esposo">Hijo de Don:</label>
+          <input id="padre_esposo" name="padre_esposo" type="text" required/>
+
+          <label for="madre_esposo">y Doña:</label>
+          <input id="madre_esposo" name="madre_esposo" type="text" required/>
+
+          <label for="lugar_bautizo_esposo">Bautizado en la parroquia de:</label>
+          <input id="lugar_bautizo_esposo" name="lugar_bautizo_esposo" type="text" required/>
+
+          <label for="esposa">Esposa:</label>
+          <input id="esposa" name="esposa" type="text" required/>
+
+          <label for="padre_esposa">Hija de Don:</label>
+          <input id="padre_esposa" name="padre_esposa" type="text" required/>
+
+          <label for="madre_esposa">y Doña:</label>
+          <input id="madre_esposa" name="madre_esposa" type="text" required/>
+
+          <label for="lugar_bautizo_esposa">Bautizada en la parroquia de:</label>
+          <input id="lugar_bautizo_esposa" name="lugar_bautizo_esposa" type="text" required/>
+
+          <label for="fecha_matrimonio">Fecha de Matrimonio:</label>
+          <input id="fecha_matrimonio" name="fecha_matrimonio" type="date" required/>
+
+          <label for="padrinos">Padrinos:</label>
+          <input id="padrinos" name="padrinos" type="text" required />
+
+          <label for="anotaciones">Anotaciones:</label>
+          <input id="anotaciones" name="anotaciones" type="text" value="Ninguno" required/>
+
+          <div class="container_save">
+            <button type="submit" class="normal_button">GUARDAR</button>
+          </div>
+          {% csrf_token %}
+        </form>
+        <div class="container_save" style="justify-content: center">
+          <a href="{% url 'matrimonio' %}">
+            <button class="red_button">CANCELAR</button>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="container_home">
+      <a href="/matrimonio">
+        <button class="home_button">
+          <img class="home_icon" src="{% static 'src/back_icon.png' %}" alt="icono de atras" />
+        </button>
+      </a>
+
+      <a href="/">
+        <button class="home_button">
+          <img class="back_icon" src="{% static 'src/home_icon.png' %}" alt="icono de home" />
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

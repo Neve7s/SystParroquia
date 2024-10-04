@@ -1,0 +1,36 @@
+body {
+  background-image: url("../src/gemini.png"), url("../src/8.png"),
+    url("../src/9.png"), url("../src/34.png");
+  background-size: 500px, 600px, 80px, 100px;
+  background-position: -80px 600px, 800px -350px, 300px 400px, 1600px 270px;
+  background-repeat: no-repeat;
+}
+
+.container_login {
+  margin: 15% auto;
+  position: relative;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-size: 28px;
+  margin-bottom: 20px;
+  padding-left: 0px;
+}
+input {
+  margin-top: 20px;
+  height: 30px;
+  width: 300px;
+  font-size: 28
+}
+
+button {
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+  text-align: center;
+  margin: 15px auto;
+}

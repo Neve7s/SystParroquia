@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>La purisima | editar registro de confirmación</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/addDoc.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/formstyle.css' %}">
+    <script src="{% static 'js/jsapp.js' %}" defer></script>
+  </head>
+  <body data-section="confirmacion">
+    <div class="container_preview">
+      <h1><strong>CERTIFICADOS DE CONFIRMACIÓN</strong></h1>
+      <button id="previewButton" type="button" class="normal_button">Agregar al Preview</button>
+      <div class="preview" id="preview"></div>
+      <div style="display: flex; justify-content: center;">
+        <button id="imp" class="normal_button">IMPRIMIR</button>
+        <script>
+          document.getElementById('imp').addEventListener('click', function() {
+              window.print();
+          });
+        </script>
+        <button id="fondo" class="normal_button">CAMBIAR FORMATO</button>
+        <input type="file" id="uploadFile" accept="image/*, application/pdf" style="display: none;">
+      </div>
+    </div>
+
+    <div class="container_right">
+      <section class="container_input">
+        <form method="post">
+
+          <label style="heigh:5px" for="parroquia">Parroquia:</label>
+          {{ formaConfirm.parroquia }}
+
+          <label for="nombre">Nombres:</label>
+          {{ formaConfirm.nombre }}
+
+          <label for="fecha">Fecha de confirmacion:</label>
+          {{ formaConfirm.fecha }}
+
+          <label for="ex_monsenor">Excmo. Mons.:</label>
+          {{ formaConfirm.ex_monsenor }}
+
+          <label for="padres">Padres:</label>
+          {{ formaConfirm.padres }}
+
+          <label for="padrinos">Padrinos:</label>
+          {{ formaConfirm.padrinos }}
+
+          <div class="container_save">
+            <button type="submit" class="normal_button">GUARDAR</button>
+          </div>
+          {% csrf_token %}
+        </form>
+        <div class="container_save" style="justify-content: center">
+          <a href="{% url 'confirm' %}">
+            <button class="red_button">CANCELAR</button>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="container_home">
+      <a href="/confirmacion">
+        <button class="home_button">
+          <img class="home_icon" src="{% static 'src/back_icon.png' %}" alt="icono de atras" />
+        </button>
+      </a>
+
+      <a href="/">
+        <button class="home_button">
+          <img class="back_icon" src="{% static 'src/home_icon.png' %}" alt="icono de home" />
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

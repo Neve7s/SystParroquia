@@ -1,0 +1,71 @@
+body {
+  background-image: url("../src/2.png");
+  background-size: 600px;
+  background-position: -220px -220px;
+  background-repeat: no-repeat;
+}
+.parroquia_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  top: 15%;
+  left: 20%;
+}
+
+.logo img {
+  width: 150%;
+  height: 150%;
+}
+
+.logo h1 {
+  margin: 10px 0 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+}
+
+.logo h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+  color: #000;
+}
+
+.menu_buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 25%;
+  right: 15%;
+}
+
+.logout {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.normal_button {
+  font-size: 20px;
+  width: 500px;
+  height: 60px;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
+.red_button {
+  font-size: 20px;
+  width: 250px;
+  height: 60px;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
+@media (max-width: 1500px) {
+  .parroquia_logo {
+    display: none;
+  }
+}

@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #f0e6dd;
+  display: flex;
+  height: 100%;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  color: black;
+}
+
+form input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+
+.normal_button {
+  background-color: #3a3836;
+  color: #f5f5f5;
+  border-radius: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-style: groove;
+  border-color: black;
+}
+
+.normal_button:hover {
+  background-color: #558a9b;
+}
+
+.red_button {
+  background-color: #3a3836;
+  color: #f5f5f5;
+  border-color: black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.red_button:hover {
+  background-color: #b75b5b;
+}
+
+.home_button {
+  background-color: #f0e6dd;
+  border: #3a3836, solid;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.home_icon {
+  width: 70px;
+  height: 70px;
+}
+
+.home_button:hover {
+  background-color: #558a9b;
+}
+
+.back_button {
+  background-color: #f0e6dd;
+  border: #3a3836, solid;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.back_icon {
+  width: 70px;
+  height: 70px;
+}
+
+.back_button:hover {
+  background-color: #558a9b;
+}
+
+.input_number::-webkit-inner-spin-button,
+.input_number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input_date {
+  text-transform: uppercase;
+  font-size: 28px;
+}
+
+.input_date::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}

@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>La purisima | Otros</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/viewDoc.css' %}">
+  </head>
+  <body>
+    <h1>Exportar base de datos</h1>
+    <form method="GET" action="{% url 'export_db' %}">
+      <button type="submit">Exportar Base de Datos</button>
+    </form>
+    <div class="container_home">
+      <a href="/">
+        <button class="home_button">
+          <img class="home_icon" src="{% static 'src/home_icon.png' %}" alt="icono de home" />
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

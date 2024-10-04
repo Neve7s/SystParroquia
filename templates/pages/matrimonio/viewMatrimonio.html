@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matrimonios</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/viewDoc.css' %}">
+  </head>
+  <body>
+    <div class="container_top">
+      <section class="container_filtro">
+        <!-- Todos los filtros están dentro de un solo formulario -->
+        <form method="GET" action="{% url 'listar_matrimonios' %}" style="display: flex; flex-direction: column;">
+          <div class="input_group_container" style="display: flex; gap: 20px;">
+            <div class="input_group">
+              <label>Esposos:</label>
+              <input class="large_input" type="text" name="esposos" value="{{ request.GET.esposos }}" />
+            </div>
+
+            <div class="input_group">
+              <label>Año Matrimonio:</label>
+              <input class="normal_input" type="number" name="ano_matrimonio" value="{{ request.GET.ano_matrimonio }}" />
+            </div>
+          </div>
+
+          <div class="button_container" style="display: flex; justify-content: center; margin-top: 20px;">
+            <button class="normal_button" type="submit" style="margin-right: 10px;">FILTRAR</button>  <!-- Botón de "Filtrar" -->
+            <a href="{% url 'listar_matrimonios' %}">
+              <button class="normal_button eliminar" type="button">ELIMINAR FILTRO</button>
+            </a>
+          </div>
+        </form>
+      </section>
+    </div>
+
+
+    <section class="container_resultados">
+      <article class="article_resultado">
+        <table>
+          <thead>
+            <tr>
+              <th>Esposos</th>
+              <th>Libro</th>
+              <th>Foja</th>
+              <th>N°</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          {% for mat in matris %}
+          <tbody>
+            <tr>
+              <td>{{ mat.esposo }} y {{ mat.esposa }}</td>
+              <td>{{ mat.libro }}</td>
+              <td>{{ mat.fojas }}</td>
+              <td>{{ mat.numero }}</td>
+              <td style="text-align: center; justify-content: center; width:auto;">
+                <a style="background-color: #558a9b; color: white; border: none; padding: 10px 20px; text-align:
+                          center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px;
+                          cursor: pointer; border-radius: 12px; width:auto;"
+                   href="/printMatrimonio/{{mat.id}}"><strong>Imprimir/Editar</strong></a>
+                <a style="background-color: #b75b5b; color: white; border: none; padding: 10px 20px; text-align: center;
+                          text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer;
+                          border-radius: 12px; width:auto;"
+                   href="/delMatrimonio/{{mat.id}}"><strong>Eliminar</strong></a>
+              </td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>
+      </article>
+    </section>
+
+    <div class="container_agregar">
+      <a href="{% url 'addMatrimonio' %}">
+        <button class="normal_button">AGREGAR</button>
+      </a>
+    </div>
+
+    <div class="container_home">
+      <a href="/">
+        <button class="home_button">
+          <img class="home_icon" src="{% static 'src/home_icon.png' %}" alt="icono de home" />
+        </button>
+      </a>
+    </div>
+  </body>
+</html>

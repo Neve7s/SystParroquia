@@ -1,0 +1,21 @@
+.form-container {
+  display: flex;
+  flex-direction: inline;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.form-container label {
+  font-size: 16px;
+  width: auto;
+}
+
+.form-container input {
+  padding: 10px;
+  margin-right: 60px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: auto; /* Ajusta el ancho del input si lo necesitas */
+}

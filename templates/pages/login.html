@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>La purisima | Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
+  </head>
+  <body>
+    <section class="container_login">
+      <form method="post">
+        {% csrf_token %}
+        <label for="username">USUARIO:</label>
+        <input style="font-size: 20px" type="text" id="username" name="username" />
+
+        <label for="password">CONTRASEÑA:</label>
+        <input type="password" id="password" name="password" />
+
+        <button class="normal_button" type="submit">INICIAR SESIÓN</button>
+      </form>
+  </body>
+</html>

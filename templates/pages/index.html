@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Inicio</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/menu.css' %}">
+  </head>
+  <body>
+    <section class="parroquia_logo">
+      <article class="logo">
+        <img src="{% static 'src/logo_test.png' %}" alt="logo_la_purisima" />
+      </article>
+    </section>
+
+    <section class="menu_buttons">
+      <a href="{% url 'bautizo' %}">
+          <button class="normal_button">Partidas de Bautismo</button>
+      </a>
+      <a href="{% url 'confirm' %}">
+          <button class="normal_button">Certificados de Confirmación</button>
+      </a>
+      <a href="{% url 'matrimonio' %}">
+          <button class="normal_button">Partidas de Matrimonio</button>
+      </a>
+      <a href="{% url 'pricomunion' %}">
+          <button class="normal_button">Primera Comunión</button>
+      </a>
+      <a href="{% url 'otros' %}">
+          <button class="normal_button">Otros ...</button>
+      </a>
+    </section>
+
+    <div class="logout">
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'logoutapp' %}">
+                <button class="red_button">Salir - {{ request.user.first_name.upper }}</button>
+            </a>
+            {% if request.user.is_superuser %}
+                <a href="/admin">
+                    <button class="normal_button">Admin</button>
+                </a>
+                <a href="{% url 'registerapp' %}">
+                    <button class="red_button">Registrar</button>
+                </a>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'loginapp' %}">
+                <button class="normal_button">Iniciar sesion</button>
+            </a>
+        {% endif %}
+    </div>
+  </body>
+</html>
